@@ -12,7 +12,8 @@ public class Main {
         binaryTree.insert(1,"1");
         binaryTree.insert(2,"2");
         binaryTree.inOrder();
-        System.out.println(binaryTree.weightTree());
+        System.out.println(binaryTree.heightTree());
+        System.out.println(binaryTree.widthTree());
         /*Haffman haffman = new Haffman("it is my striiiiing!!!!");
         haffman.haffmanStart();*/
     }

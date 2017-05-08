@@ -120,17 +120,17 @@ public class BinaryTree<K extends Comparable<K>,V>{
             inOrder(curElement.getRightChild());
         }
     }
-    public int weightTree(){
-        return weightTree(root);
+    public int widthTree(){
+        return widthTree(root);
     }
 
-    private int weightTree(Node<K, V> curNode) {
+    private int widthTree(Node<K, V> curNode) {
         int maxWidth = 0;
         int level;
         int width = 0;
         int heigth = heightTree();
         //проходим по уровням и ищем ширину
-        for (level = 0; level <heigth ; level++) {
+        for (level = 0; level <= heigth ; level++) {
             width = getWidth(root,level);
             if(width>maxWidth)
                 maxWidth =width;
