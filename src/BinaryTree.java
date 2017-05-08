@@ -120,6 +120,50 @@ public class BinaryTree<K extends Comparable<K>,V>{
             inOrder(curElement.getRightChild());
         }
     }
+    public int weightTree(){
+        return weightTree(root);
+    }
+
+    private int weightTree(Node<K, V> curNode) {
+        int maxWidth = 0;
+        int level;
+        int width = 0;
+        int heigth = heightTree();
+        //проходим по уровням и ищем ширину
+        for (level = 0; level <heigth ; level++) {
+            width = getWidth(root,level);
+            if(width>maxWidth)
+                maxWidth =width;
+        }
+        return maxWidth;
+    }
+
+    private int getWidth(Node<K, V> curNode, int level) {
+        //если элемент пуст то его ширина 0
+        if(curNode == null)
+            return 0;
+        //если это родитель, то у него только 1 элемент
+        if(level == 1)
+            return 1;
+        //если уровнь больше первого, то есть если мы ниже root
+        else if(level>1){
+            return getWidth(curNode.getLeftChild(),level-1) + getWidth(curNode.getRightChild(),level-1);
+        }
+        getWidth(curNode.getRightChild(),level-1);
+        return 0;
+    }
+
+    public int heightTree(){
+        return heightTree(root);
+    }
+    //высота дерева
+    private int heightTree(Node<K, V> curNode) {
+        if(curNode == null){
+            return 0;
+        }
+        return 1+Math.max(heightTree(curNode.getLeftChild()),heightTree(curNode.getRightChild()));
+    }
+
     public void postOrder(){
         postOrder(root);
     }
